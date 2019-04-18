@@ -37,6 +37,7 @@ app.get("/artists", (req, res, next) => {
     .searchArtists(query.artist)
     .then(data => {
       const artists = data.body.artists.items;
+      // res.send(artists);
       res.render("artists", { artists });
     })
     .catch(err => {
@@ -51,6 +52,7 @@ app.get("/albums/:artistId", (req, res, next) => {
     .getArtistAlbums(artistId)
     .then(data => {
       const albums = data.body.items;
+      // res.send(albums);
       res.render("albums", { albums });
     })
     .catch(err => {
@@ -65,6 +67,7 @@ app.get("/tracks/:albumId", (req, res, next) => {
     .getAlbumTracks(albumId, { limit: 5, offset: 1 })
     .then(data => {
       const tracks = data.body.items;
+      // res.send(tracks);
       res.render("tracks", { tracks });
     })
     .catch(err => {
